@@ -14,6 +14,3 @@ export const steX = (e: any) => {
     }
 };
 
-export const victorycheck=(matrix: any[]): void=> {
-    matrix.map(row=> row[0] === row[1] ? row[1]===row[2] ? row[2] !== 0 ? console.log(row) : null : null  : null);
-};

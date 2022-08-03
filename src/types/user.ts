@@ -1,5 +1,5 @@
 export interface UserState {
-    win: null | "x" | "y",
+    win: null | string,
     nowx: boolean,
     cellx: number,
     celly: number,

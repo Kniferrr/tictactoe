@@ -1,5 +1,6 @@
 import {UserState} from "../../types/user"
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { stat } from "fs";
 
 
 const initialState:UserState  = {
@@ -35,17 +36,21 @@ export const useReduser = createSlice({
         state.nowx ? state.nowx = false : state.nowx = true;
       },
       OnPut: (state,action: PayloadAction<string>) => {
-        const payload: number = Number(action.payload)
-        const x = Math.round((payload- 1) / 3);
-        const y = payload % 3;
-        state.matrix[x][y] = state.nowx ? "x" : "y";
+        state.matrix[Number(action.payload)] = state.nowx ? "x" : "y";
       },
+      OnWin: (state,) => {
+        state.win = state.nowx ? "x": "y";
+      },
+      OnRestart: (state,action: PayloadAction<any[]>) => {
+        return {...initialState, matrix: action.payload}
+      },
+      
 
 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut } = useReduser.actions
+export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart } = useReduser.actions
 
 export default useReduser.reducer

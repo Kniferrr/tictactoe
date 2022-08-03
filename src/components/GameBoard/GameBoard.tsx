@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import {fethUsers} from "../../store/actionCreater/user";
-import {steX,victorycheck} from "../../store/actionCreater/setx";
+import {fethUsers,Restart} from "../../store/actionCreater/user";
+import {steX} from "../../store/actionCreater/setx";
+import {checkWin} from "../../store/actionCreater/checkWin"
 import "./GameBoard.css";
+import {OnWin} from "../../store/redusers/userReduser"
 
 const GameBoard: React.FC = () => {
-    const {matrix, loading, error, cellx,celly} = useTypedSelector(state => state.user);
+    const {matrix, loading, error, cellx,celly,win} = useTypedSelector(state => state.user);
     const dispatch: any = useDispatch();
 
 
     useEffect( ()=>{
-        victorycheck(matrix)
+        if(checkWin(matrix)){
+            dispatch(OnWin())
+        }
     }, [matrix]);
 
     useEffect( ()=>{
@@ -24,18 +28,20 @@ const GameBoard: React.FC = () => {
 
     if(error){
         return <h2>Error...</h2>
-    };
-    if(loading){
+    }else if(loading){
         return <h2>Loading...</h2>
-    };
-    let y = 0;
-    let x = 0;
-    let id = 0;
+    }else if (win !== null){
+        return <div><h2>{`win - ${win}`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+    }
+
+    let id = -1;
 
   return (
-    <div className='game-board'>{
-    matrix.map((row)=>(<div className='row  flex-wrap' key={x++}> {row.map((cell: any)=> (<div onClick={ OnClickCell } id={`${id++}`} className='cell col' key={y++}>{cell}</div>))} </div>))
-    }</div>
+    <div className='game-board'>
+        
+        { matrix.map((row)=>(<div onClick={ OnClickCell } id={`${++id}`} className='cell col' key={id}>{row}</div>))}
+        
+    </div>
   )
 };
 

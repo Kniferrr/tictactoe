@@ -12,9 +12,10 @@ const GameBoard: React.FC = () => {
     const dispatch: any = useDispatch();
 
 
-    useEffect( ()=>{
-        if(checkWin(matrix)){
-            dispatch(OnWin())
+    useEffect(()=>{
+        const winStatus = checkWin(matrix);
+        if(winStatus){
+            dispatch(OnWin(winStatus))
         }
     }, [matrix]);
 
@@ -31,7 +32,11 @@ const GameBoard: React.FC = () => {
     }else if(loading){
         return <h2>Loading...</h2>
     }else if (win !== null){
-        return <div><h2>{`win - ${win}`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+        if(win === "drow"){
+            return <div><h2>{`drow`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+        }else{
+            return <div><h2>{`win - ${win}`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+        }
     }
 
     let id = -1;

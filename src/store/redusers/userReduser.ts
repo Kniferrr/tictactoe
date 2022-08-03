@@ -38,8 +38,12 @@ export const useReduser = createSlice({
       OnPut: (state,action: PayloadAction<string>) => {
         state.matrix[Number(action.payload)] = state.nowx ? "x" : "y";
       },
-      OnWin: (state,) => {
-        state.win = state.nowx ? "x": "y";
+      OnWin: (state,action: PayloadAction<string | any[]>) => {
+        if(action.payload === "draw"){
+          state.win = "draw";
+        }else{
+          state.win = state.nowx ? "x": "y";
+        }
       },
       OnRestart: (state,action: PayloadAction<any[]>) => {
         return {...initialState, matrix: action.payload}
@@ -51,6 +55,6 @@ export const useReduser = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart } = useReduser.actions
+export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart,  } = useReduser.actions
 
 export default useReduser.reducer

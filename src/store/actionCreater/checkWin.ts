@@ -19,6 +19,10 @@ export const checkWin = (matrix: any[]) =>{
     }else if (matrix[2] !== 0 && matrix[2] !== null && matrix[2] !== undefined && matrix[2]=== matrix[4] && matrix[4]=== matrix[6]){
         console.log("win")
         return matrix[2];
+    }else if (matrix.length !== 0 && (matrix.filter((el)=> el === null).length === 0)){
+        console.log("matrix")
+        console.log(matrix)
+        return "draw";
     }
     else{
         for(let i: number = 0; i < 3; i++){
@@ -26,6 +30,8 @@ export const checkWin = (matrix: any[]) =>{
                     console.log("win")
                     return matrix[i];
             }
-        };
+        }
+        
+        
     };
 };

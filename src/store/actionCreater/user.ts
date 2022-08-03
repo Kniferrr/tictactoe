@@ -28,7 +28,6 @@ const createMAtrix = (cellx: number,celly: number) =>{
 export const Restart = ( ) => {
     return async (dispatch: Dispatch<any>) => {
         try{
-            console.log( createMAtrix(3, 3));
             dispatch(OnRestart(createMAtrix(3, 3)))
         }catch(e){
             dispatch(FETCH_USERS_ERROR("Произошла ошибка при загрузке пользователей"));

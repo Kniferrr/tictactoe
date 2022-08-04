@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 
-import {OnWin,FETCH_USERS_ERROR } from "../redusers/userReduser"
+import {OnWin,FETCH_USERS_ERROR } from "../redusers/cellState"
 
 export const checkWin = (matrix: any[]) =>{ 
 

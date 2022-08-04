@@ -1,11 +1,11 @@
 import axios from "axios";
 import { Dispatch } from "redux"
-import {OnRestart} from "../redusers/userReduser"
+import {OnRestart} from "../redusers/cellState"
 
-import {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR } from "../redusers/userReduser"
+import {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR } from "../redusers/cellState"
 
 
-export const fethUsers = ( cellx: number,celly: number) => {
+export const createNewMAtrix = ( cellx: number,celly: number) => {
     return async (dispatch: Dispatch<any>) => {
         try{
             dispatch(FETCH_USERS());

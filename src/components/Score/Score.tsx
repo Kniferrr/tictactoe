@@ -3,7 +3,7 @@ import "./Score.css";
 import { useTypedSelector } from '../hooks/useTypedSelector';
 
 function Score() {
-    const {scorex, scorey} = useTypedSelector(state => state.user);
+    const {scorex, scorey} = useTypedSelector(state => state.cellState);
   return (
     <div className='score'>
         <span className='score_x'>win x - {scorex}</span>

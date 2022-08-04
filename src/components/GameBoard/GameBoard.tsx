@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../hooks/useTypedSelector';
-import {fethUsers,Restart} from "../../store/actionCreater/user";
+import {createNewMAtrix,Restart} from "../../store/actionCreater/createNewMAtrix";
 import {steX} from "../../store/actionCreater/setx";
 import {checkWin} from "../../store/actionCreater/checkWin"
 import "./GameBoard.css";
-import {OnWin} from "../../store/redusers/userReduser"
+import {OnWin} from "../../store/redusers/cellState"
 
 const GameBoard: React.FC = () => {
-    const {matrix, loading, error, cellx,celly,win} = useTypedSelector(state => state.user);
+    const {matrix, loading, error, cellx,celly,win} = useTypedSelector(state => state.cellState);
     const dispatch: any = useDispatch();
 
 
@@ -20,7 +20,7 @@ const GameBoard: React.FC = () => {
     }, [matrix]);
 
     useEffect( ()=>{
-        dispatch(fethUsers(cellx,celly))
+        dispatch(createNewMAtrix(cellx,celly))
     }, []);
 
     const OnClickCell = (e: any) =>{

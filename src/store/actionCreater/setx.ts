@@ -1,6 +1,6 @@
 import { Dispatch } from "redux"
 
-import {SetNewNow,FETCH_USERS_ERROR,OnPut } from "../redusers/userReduser"
+import {SetNewNow,FETCH_USERS_ERROR,OnPut } from "../redusers/cellState"
 
 
 export const steX = (e: any) => {

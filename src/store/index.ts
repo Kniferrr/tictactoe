@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import useReduser from "./redusers/userReduser";
+import cellState from "./redusers/cellState";
 
 const store = configureStore({
   reducer: {  
-    user: useReduser,
+    cellState: cellState,
 },
 });
 

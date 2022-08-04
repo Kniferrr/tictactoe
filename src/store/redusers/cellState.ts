@@ -16,8 +16,8 @@ const initialState:UserState  = {
     error: null,
   };
 
-export const useReduser = createSlice({
-  name: 'useReduser',
+export const cellState = createSlice({
+  name: 'cellState',
   initialState,
   reducers: {
     FETCH_USERS: (state) => {
@@ -62,6 +62,6 @@ export const useReduser = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart,  } = useReduser.actions
+export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart,  } = cellState.actions
 
-export default useReduser.reducer
+export default cellState.reducer

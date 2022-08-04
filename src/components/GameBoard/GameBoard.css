@@ -21,4 +21,15 @@
     font-size: 100px;
 }
 
+.button_restart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window_restart{
+    display: flex;
+    flex-direction: column;
+}
+
 

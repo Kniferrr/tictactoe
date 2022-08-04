@@ -1,0 +1,12 @@
+.score{
+    display: flex;
+}
+
+.score_x{
+    font-size: 44px;
+    margin-right: 100px;
+}
+
+.score_y{
+    font-size: 44px;
+}

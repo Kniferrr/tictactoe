@@ -33,9 +33,9 @@ const GameBoard: React.FC = () => {
         return <h2>Loading...</h2>
     }else if (win !== null){
         if(win === "drow"){
-            return <div><h2>{`drow`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+            return <div className='window_restart'><h2>{`drow`}</h2><button className='btn btn-dark button_restart'  onClick={()=> dispatch(Restart())}>restart</button></div>
         }else{
-            return <div><h2>{`win - ${win}`}</h2><button className='btn btn-dark' onClick={()=> dispatch(Restart())}>restart</button></div>
+            return <div className='window_restart'><h2>{`win - ${win}`}</h2><button className='btn btn-dark button_restart' onClick={()=> dispatch(Restart())}>restart</button></div>
         }
     }
 

@@ -1,4 +1,6 @@
 export interface UserState {
+    scorex: number,
+    scorey: number,
     win: null | string,
     nowx: boolean,
     cellx: number,

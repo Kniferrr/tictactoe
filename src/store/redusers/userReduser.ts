@@ -4,6 +4,8 @@ import { stat } from "fs";
 
 
 const initialState:UserState  = {
+    scorex: 0,
+    scorey: 0,
     win: null,
     nowx: false,
     cellx: 3,
@@ -43,10 +45,15 @@ export const useReduser = createSlice({
           state.win = "draw";
         }else{
           state.win = state.nowx ? "x": "y";
+          if(state.nowx){
+            state.scorex++;
+          }else{
+            state.scorey++;
+          }
         }
       },
       OnRestart: (state,action: PayloadAction<any[]>) => {
-        return {...initialState, matrix: action.payload}
+        return {...initialState, matrix: action.payload, scorex: state.scorex, scorey: state.scorey }
       },
       
 

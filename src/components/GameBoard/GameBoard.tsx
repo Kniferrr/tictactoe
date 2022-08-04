@@ -24,7 +24,9 @@ const GameBoard: React.FC = () => {
     }, []);
 
     const OnClickCell = (e: any) =>{
-        dispatch(steX(e.target.id))
+        if(matrix[e.target.id] === null){
+            dispatch(steX(e.target.id))
+        }
     }
 
     if(error){

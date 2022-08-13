@@ -6,8 +6,12 @@ import {steX} from "../../store/actionCreater/setx";
 import {checkWin} from "../../store/actionCreater/checkWin"
 import "./GameBoard.css";
 import {OnWin} from "../../store/redusers/cellState"
+import { motion,AnimatePresence } from "framer-motion";
+import {variants} from "../../animations/index"
 
 const GameBoard: React.FC = () => {
+
+
     const {matrix, loading, error, cellx,celly,win} = useTypedSelector(state => state.cellState);
     const dispatch: any = useDispatch();
 
@@ -46,7 +50,12 @@ const GameBoard: React.FC = () => {
   return (
     <div className='game-board'>
         
-        { matrix.map((row)=>(<div onClick={ OnClickCell } id={`${++id}`} className='cell col' key={id}>{row}</div>))}
+        { matrix.map((row)=>(<motion.div 
+        initial={"initial"}
+        animate={"visible"}
+        custom={5}
+        variants={variants}
+         onClick={ OnClickCell } id={`${++id}`} className='cell col' key={id}>{row}</motion.div>))}
         
     </div>
   )

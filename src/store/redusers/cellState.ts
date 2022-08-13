@@ -14,6 +14,7 @@ const initialState:UserState  = {
     users: [],
     loading: false,
     error: null,
+    players: 1,
   };
 
 export const cellState = createSlice({
@@ -55,13 +56,14 @@ export const cellState = createSlice({
       OnRestart: (state,action: PayloadAction<any[]>) => {
         return {...initialState, matrix: action.payload, scorex: state.scorex, scorey: state.scorey }
       },
-      
-
+      setPlayers: (state,action: PayloadAction<number>) => {
+        state.players = action.payload;
+      },
 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart,  } = cellState.actions
+export const {FETCH_USERS,FETCH_USERS_SUCCESS,FETCH_USERS_ERROR,SetNewNow,OnPut,OnWin,OnRestart, setPlayers} = cellState.actions
 
 export default cellState.reducer

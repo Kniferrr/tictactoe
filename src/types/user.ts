@@ -1,4 +1,5 @@
 export interface UserState {
+    players: number,
     scorex: number,
     scorey: number,
     win: null | string,
